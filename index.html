@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Обратный тригонометрический калькулятор с графиком</title>
+  <link rel="stylesheet" href="index.css">
+  <!-- Подключение jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Подключение Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="calculator">
+        <h2>եռանկյունաչափական հաշվիչ</h2>
+        
+        <label for="value">Մուտքագրեք արժեք (օրինակ՝ համար sin x = 0.5):</label>
+        <input type="number" id="value" placeholder="0.5" step="any">
+        
+        <label for="unit">Ընտրեք արդյունքի միավորը </label>
+        <select id="unit" class="unit-select">
+          <option value="radians">Ռադիան</option>
+          <option value="degrees">Աստիճան</option>
+        </select>
+        
+        <div class="function-buttons">
+          <button class="btn-asin" data-func="asin">sin</button>
+          <button class="btn-acos" data-func="acos">cos</button>
+          <button class="btn-atan" data-func="atan">tan</button>
+        </div>]]
+        
+        <div class="result" id="result"></div>
+      </div>
+  
+  
+ <script src="index.js"></script>
+</body>
+</html>
