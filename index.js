@@ -1,16 +1,15 @@
-
 $(document).ready(function(){
   $('.function-buttons button').click(function(){
     var func = $(this).data('func');
     var inputValue = parseFloat($('#value').val());
     if(isNaN(inputValue)) {
-      $('#result').html("Խնդրում ենք մուտքագրել ստույգ թվային արժեք:");
+      $('#result').html("Please enter a valid numeric value:");
       return;
     }
     
-    // Для asin и acos значение должно быть в диапазоне [-1, 1]
+    // For asin and acos, the value must be in the range [-1, 1]
     if((func === "asin" || func === "acos") && (inputValue < -1 || inputValue > 1)) {
-      $('#result').html("Для выбранной функции значение должно быть в диапазоне Ընտրած ֆունկցիայի համար ընտրած արԺեքը պատկանում է  [-1, 1].");
+      $('#result').html("For the selected function, the value must be in the range [-1, 1].");
       return;
     }
     
@@ -28,15 +27,15 @@ $(document).ready(function(){
     var resultText = "";
     if(unit === "degrees") {
       computedY = angleRadians * (180 / Math.PI);
-      resultText = "Արդյունքը: " + computedY.toFixed(4) + "°";
+      resultText = "Result: " + computedY.toFixed(4) + "°";
     } else {
       computedY = angleRadians;
-      resultText = "Արդյունքը: " + computedY.toFixed(4) + " ռադ.";
+      resultText = "Result: " + computedY.toFixed(4) + " rad.";
     }
     
     $('#result').html(resultText);
     
-    // Генерация данных для графика
+    // Generating data for the graph
     var data = [];
     var start, end, step;
     if (func === "asin" || func === "acos") {
@@ -64,7 +63,7 @@ $(document).ready(function(){
       data.push({ x: x, y: y });
     }
     
-    // Если график уже существует, уничтожаем его перед созданием нового
+    // If the graph already exists, destroy it before creating a new one
     if (window.chart) {
       window.chart.destroy();
     }
@@ -75,7 +74,7 @@ $(document).ready(function(){
       data: {
         datasets: [
           {
-            label: func + " функция",
+            label: func + " function",
             data: data,
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -85,7 +84,7 @@ $(document).ready(function(){
             pointRadius: 0,
           },
           {
-            label: 'Введённое значение',
+            label: 'Entered value',
             data: [{ x: inputValue, y: computedY }],
             borderColor: 'red',
             backgroundColor: 'red',
@@ -102,13 +101,13 @@ $(document).ready(function(){
             position: 'bottom',
             title: {
               display: true,
-              text: "Իմաստը"
+              text: "Value"
             }
           },
           y: {
             title: {
               display: true,
-              text: "Արդյունքը (" + (unit === "degrees" ? "°" : "Ռադ") + ")"
+              text: "Result (" + (unit === "degrees" ? "°" : "Rad") + ")"
             }
           }
         },
@@ -125,4 +124,3 @@ $(document).ready(function(){
     });
   });
 });
-
